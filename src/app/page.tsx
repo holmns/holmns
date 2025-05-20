@@ -1,10 +1,7 @@
-"use client";
-
 import NavBar from "@/components/navBar";
+import Header from "@/components/header";
 import AboutMe from "@/components/aboutMe";
 import MyWork from "@/components/myWork";
-import dynamic from "next/dynamic";
-const Header = dynamic(() => import("../components/header"), { ssr: false });
 
 export default function Home() {
   return (
