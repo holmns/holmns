@@ -1,6 +1,6 @@
 export default function AboutMe() {
   return (
-    <div className="flex flex-col justify-center items-center py-20">
+    <section id="about-me" className="flex flex-col justify-center items-center py-20 mt-10">
       <h1 className="text-6xl font-bold text-light">About Me</h1>
       <p className="text-light mt-10 w-[60%]">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident, libero ipsam! Minus rerum magnam quidem
@@ -40,6 +40,6 @@ export default function AboutMe() {
         fuga, ullam vel temporibus ab nemo, quis natus voluptatibus, ut amet cupiditate? Hic tempore deleniti commodi
         suscipit veniam. Exercitationem, modi?
       </p>
-    </div>
+    </section>
   );
 }

@@ -11,10 +11,10 @@ export default function MyWork() {
   ];
 
   return (
-    <div className="flex flex-col justify-center items-center py-20">
+    <section id="my-work" className="flex flex-col justify-center items-center py-20">
       <h1 className="text-6xl font-bold text-light">My Work</h1>
       <Selector category={category} setCategory={setCategory} workCategories={workCategories} />
-    </div>
+    </section>
   );
 }
 
@@ -26,7 +26,7 @@ type selectorProps = {
 
 function Selector({ category, setCategory, workCategories }: selectorProps) {
   return (
-    <div className="flex flex-row gap-30 mt-15">
+    <div className="flex flex-row gap-10 md:gap-16 lg:gap-30 mt-15">
       {workCategories.map((workCategory, index) => (
         <button
           onClick={() => setCategory(index)}
