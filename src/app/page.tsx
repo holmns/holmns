@@ -1,7 +1,8 @@
 import AboutMe from "@/components/aboutMe";
-import Header from "@/components/header";
 import MyWork from "@/components/myWork";
 import NavBar from "@/components/navBar";
+import dynamic from "next/dynamic";
+const Header = dynamic(() => import("../components/header"), { ssr: false });
 
 export default function Home() {
   return (
