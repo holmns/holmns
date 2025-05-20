@@ -15,9 +15,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Holmns | Nawat Suangburanakul",
   description: "Holmes' personal portfolio site",
-  icons: {
-    icon: "/home-logo.svg",
-  },
 };
 
 export default function RootLayout({
