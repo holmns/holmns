@@ -17,6 +17,7 @@ export const techMap = {
   firebase: { name: "Firebase", path: "/tech-icons/firebase.png" },
   python: { name: "Python", path: "/tech-icons/python.png" },
   tensorflow: { name: "Tensorflow", path: "/tech-icons/tensorflow.png" },
+  git: { name: "Git", path: "/tech-icons/git.png" },
 } as const;
 
 export type TechId = keyof typeof techMap;

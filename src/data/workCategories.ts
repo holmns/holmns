@@ -36,6 +36,7 @@ export const workCategories: WorkCategoryType[] = [
       "firebase",
       "python",
       "tensorflow",
+      "git",
     ],
     projects: [
       {
