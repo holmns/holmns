@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Header() {
   return (
     <section id="header" className="relative flex flex-row h-[650px] bg-light items-center justify-center">
-      <div className="md:mr-[40%] lg:mr-[50%] ml-8 flex flex-col justify-start z-10">
+      <div className="mr-0 md:mr-[40%] lg:mr-[50%] ml-8 flex flex-col justify-start z-10">
         <p className="text-7xl font-bold text-dark tracking-tight">Holmes</p>
         <p className="text-4xl mt-[-10px] text-dark tracking-tight">Nawat Suangburanakul</p>
         <div className="flex flex-row gap-3 mt-2">

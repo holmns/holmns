@@ -45,8 +45,8 @@ function Selector({ selectedCategory, setSelectedCategory, workCategories }: sel
               hover:blur-none hover:scale-110
             `}
         >
-          <div className="text-6xl">{workCategory.icon}</div>
-          <div className={`transition-all duration-300 text-2xl`}>{workCategory.name}</div>
+          <div className="text-4xl md:text-5xl lg:text-6xl">{workCategory.icon}</div>
+          <div className={`transition-all duration-300 text-lg md:text-xl lg:text-2xl`}>{workCategory.name}</div>
         </button>
       ))}
     </div>
@@ -68,13 +68,18 @@ function TechStack({ selectedCategory, workCategories }: techStackProps) {
             key={index}
             className="flex flex-col items-center justify-center w-20 h-20 bg-white/5 rounded-xl border border-white/0 hover:border-white/10 transition-all duration-300"
           >
-            <Image
-              src={techMap[tech].path}
-              alt={techMap[tech].name}
-              width={100}
-              height={100}
-              className="w-full h-full p-5 box-border object-contain"
-            />
+            <div className="relative group w-full h-full">
+              <Image
+                src={techMap[tech].path}
+                alt={techMap[tech].name}
+                width={100}
+                height={100}
+                className="w-full h-full p-5 box-border object-contain"
+              />
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[130%] mt-2 px-2 py-1 text-xs whitespace-nowrap text-white bg-black/20 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                {techMap[tech].name}
+              </span>
+            </div>
           </div>
         ))}
       </div>
