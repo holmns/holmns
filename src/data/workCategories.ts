@@ -30,7 +30,7 @@ export const workCategories: WorkCategoryType[] = [
         desc: "Share Hidden Gems",
         image: "/project-images/tlub.jpeg",
         link: "https://apps.apple.com/th/app/t-lub/id6670796341?l=en",
-        tech: ["swift", "firebase"],
+        tech: ["swift", "ts", "firebase"],
       },
       {
         name: "Heart Sound Classification",
