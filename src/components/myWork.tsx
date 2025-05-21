@@ -10,7 +10,7 @@ export default function MyWork() {
 
   return (
     <section id="my-work" className="flex flex-col justify-center items-center py-20">
-      <h1 className="text-6xl font-bold text-light">My Work</h1>
+      <h1 className="text-6xl font-bold text-white">My Work</h1>
       <Selector
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}

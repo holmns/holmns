@@ -11,7 +11,7 @@ export const workCategories: WorkCategoryType[] = [
   {
     name: "Photography",
     icon: "📷",
-    tech: ["lightroom", "photoshop"],
+    tech: ["photoshop", "lightroom"],
     projects: [],
   },
   {
@@ -23,7 +23,20 @@ export const workCategories: WorkCategoryType[] = [
   {
     name: "Programming",
     icon: "💻",
-    tech: ["html", "css", "js", "ts", "react", "reactNative", "tailwind", "swift", "firebase", "python", "tensorflow"],
+    tech: [
+      "html",
+      "css",
+      "js",
+      "ts",
+      "react",
+      "reactNative",
+      "next",
+      "tailwind",
+      "swift",
+      "firebase",
+      "python",
+      "tensorflow",
+    ],
     projects: [
       {
         name: "T-lub",
@@ -37,7 +50,7 @@ export const workCategories: WorkCategoryType[] = [
         desc: "Eco quest gamified. (In development)",
         image: "/project-images/questerrain.jpg",
         link: "",
-        tech: ["reactNative", "ts", "firebase"],
+        tech: ["reactNative", "ts", "tailwind", "firebase"],
       },
       {
         name: "Heart Sound Classification",

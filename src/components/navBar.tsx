@@ -24,23 +24,23 @@ export default function NavBar() {
         transform: `translateY(${translateY}px)`,
       }}
     >
-      <p className="text-light font-medium text-sm md:text-base px-[10px] py-[15px]">
+      <p className="text-white font-medium text-sm md:text-base px-[10px] py-[15px]">
         <span className="block md:hidden">Nawat S.</span>
         <span className="hidden md:block">Nawat Suangburanakul</span>
       </p>
       <ul className="flex flex-row gap-2.5 items-center justify-center">
         <li className="py-[10px] px-[15px] bg-[rgba(255,255,255,0)] hover:bg-[rgba(255,255,255,0.1)] rounded-xl transition-all duration-300">
-          <a href="#header" className="text-light text-sm md:text-base">
+          <a href="#header" className="text-white text-sm md:text-base">
             Home
           </a>
         </li>
         <li className="py-[10px] px-[15px] bg-[rgba(255,255,255,0)] hover:bg-[rgba(255,255,255,0.1)] rounded-xl transition-all duration-300">
-          <a href="#about-me" className="text-light text-sm md:text-base">
+          <a href="#about-me" className="text-white text-sm md:text-base">
             About Me
           </a>
         </li>
         <li className="py-[10px] px-[15px] bg-[rgba(255,255,255,0)] hover:bg-[rgba(255,255,255,0.1)] rounded-xl transition-all duration-300">
-          <a href="#my-work" className="text-light text-sm md:text-base">
+          <a href="#my-work" className="text-white text-sm md:text-base">
             My Work
           </a>
         </li>

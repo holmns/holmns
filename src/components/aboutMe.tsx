@@ -1,8 +1,8 @@
 export default function AboutMe() {
   return (
     <section id="about-me" className="flex flex-col justify-center items-center py-20 mt-10">
-      <h1 className="text-6xl font-bold text-light">About Me</h1>
-      <p className="text-light mt-10 w-[60%]">
+      <h1 className="text-6xl font-bold text-white">About Me</h1>
+      <p className="text-white mt-10 w-[60%]">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident, libero ipsam! Minus rerum magnam quidem
         ipsum placeat consectetur. Rem delectus, rerum minima blanditiis laborum facilis corrupti, at deserunt
         dignissimos maiores nam facere doloremque accusantium magnam magni? Eos ex deleniti tempore perspiciatis ab
