@@ -33,6 +33,13 @@ export const workCategories: WorkCategoryType[] = [
         tech: ["swift", "ts", "firebase"],
       },
       {
+        name: "Questerrain",
+        desc: "Eco quest gamified. (In development)",
+        image: "/project-images/questerrain.jpg",
+        link: "",
+        tech: ["reactNative", "ts", "firebase"],
+      },
+      {
         name: "Heart Sound Classification",
         desc: "Deep Learning Model for Stethoscope-Recorded Heart Sounds Abnormality Detection",
         image: "/project-images/heart-ai.jpeg",
