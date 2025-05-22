@@ -18,7 +18,7 @@ export default function NavBar() {
 
   return (
     <nav
-      className="fixed top-0 w-full flex flex-row justify-between items-center box-border bg-[rgba(38,38,38,0.5)] shadow-[0_4px_30px_rgba(0,0,0,0.2)] backdrop-blur-[10px] border border-[rgba(38,38,38,0.85)] py-[15px] px-[30px] z-[10000]"
+      className="fixed top-0 w-full flex flex-row justify-between items-center box-border bg-[rgba(38,38,38,0.5)] shadow-[0_4px_30px_rgba(0,0,0,0.2)] backdrop-blur-[10px] border-b border-[rgba(38,38,38,0.85)] py-[15px] px-[30px] z-[10000]"
       style={{
         transition: `transform 0.5s ease`,
         transform: `translateY(${translateY}px)`,

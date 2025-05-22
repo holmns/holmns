@@ -4,7 +4,15 @@ export type WorkCategoryType = {
   name: string;
   icon: string;
   tech: TechId[];
-  projects: { name: string; desc: string; image: string; link: string; tech: TechId[] }[];
+  projects: ProjectType[];
+};
+
+export type ProjectType = {
+  name: string;
+  desc: string;
+  image: string;
+  link: string;
+  tech: TechId[];
 };
 
 export const workCategories: WorkCategoryType[] = [
