@@ -38,7 +38,7 @@ export default function Cursor() {
       if (!visible) {
         visible = true;
         gsap.set([dot, frame], { x: e.clientX, y: e.clientY });
-        gsap.to([dot, frame], { opacity: 1, duration: 0.3 });
+        gsap.to(dot, { opacity: 1, duration: 0.3 });
       }
       dotX(e.clientX);
       dotY(e.clientY);
@@ -48,6 +48,7 @@ export default function Cursor() {
       const target = (e.target as Element | null)?.closest?.("a, button, [data-hover]");
       if (!!target !== hovering) {
         hovering = !!target;
+        gsap.to(frame, { opacity: hovering ? 1 : 0, duration: 0.3, overwrite: "auto" });
         frameScale(hovering ? 1.7 : 1);
       }
     };
@@ -69,7 +70,8 @@ export default function Cursor() {
 
     const onLeave = () => {
       visible = false;
-      gsap.to([dot, frame], { opacity: 0, duration: 0.3 });
+      hovering = false;
+      gsap.to([dot, frame], { opacity: 0, duration: 0.3, overwrite: "auto" });
     };
 
     window.addEventListener("pointermove", onMove);
