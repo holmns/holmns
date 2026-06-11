@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Anton, Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
@@ -13,9 +13,25 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const anton = Anton({
+  weight: "400",
+  variable: "--font-anton",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
-  title: "Holmns | Nawat Suangburanakul",
-  description: "Holmes' personal portfolio site",
+  title: "HOLMNS — Nawat Suangburanakul",
+  description:
+    "Nawat 'Holmes' Suangburanakul — software developer, photographer and videographer based in Thailand. Apps, applied AI, stills and motion.",
+  openGraph: {
+    title: "HOLMNS — Nawat Suangburanakul",
+    description: "Software developer, photographer and videographer based in Thailand.",
+    type: "website",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a09",
 };
 
 export default function RootLayout({
@@ -24,11 +40,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-      </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable} ${anton.variable} antialiased`}>
         {children}
         <Analytics />
       </body>

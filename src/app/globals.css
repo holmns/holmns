@@ -1,26 +1,183 @@
 @import "tailwindcss";
 
 :root {
-  --dark: rgb(11, 12, 14);
-  --light: rgb(253, 250, 246);
+  --bg: #0a0a09;
+  --fg: #ecebe5;
+  --muted: #8b887d;
+  --accent: #ff3d24;
+  --line: rgba(236, 235, 229, 0.14);
 }
 
 @theme inline {
-  --color-dark: var(--dark);
-  --color-light: var(--light);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-line: var(--line);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: var(--font-anton), Impact, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --dark: rgb(11, 12, 14);
-    --light: rgb(253, 250, 246);
-  }
+html {
+  background: var(--bg);
 }
 
 body {
-  background: var(--dark);
-  color: var(--light);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* ---------- utilities ---------- */
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--fg) 45%, transparent);
+}
+
+.text-outline-accent {
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--accent) 80%, transparent);
+}
+
+/* camera REC indicator */
+.rec-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+  animation: rec-blink 1.6s steps(1) infinite;
+}
+
+@keyframes rec-blink {
+  50% {
+    opacity: 0.15;
+  }
+}
+
+/* scroll cue: a dot travelling down a hairline */
+.scroll-cue {
+  position: relative;
+  width: 1px;
+  height: 48px;
+  overflow: hidden;
+  background: var(--line);
+}
+
+.scroll-cue::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--fg);
+  animation: cue-drop 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes cue-drop {
+  0% {
+    transform: translateY(-100%);
+  }
+  55%,
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* film grain overlay */
+.grain {
+  position: fixed;
+  inset: -100%;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain-shift 7s steps(10) infinite;
+}
+
+@keyframes grain-shift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -8%);
+  }
+  20% {
+    transform: translate(-12%, 3%);
+  }
+  30% {
+    transform: translate(6%, -14%);
+  }
+  40% {
+    transform: translate(-3%, 12%);
+  }
+  50% {
+    transform: translate(-10%, 4%);
+  }
+  60% {
+    transform: translate(12%, 0);
+  }
+  70% {
+    transform: translate(0, 9%);
+  }
+  80% {
+    transform: translate(3%, 13%);
+  }
+  90% {
+    transform: translate(-8%, 5%);
+  }
+}
+
+/* custom cursor: camera focus bracket (fine pointers only) */
+@media (pointer: fine) {
+  .cursor-dot,
+  .cursor-frame {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 150;
+    pointer-events: none;
+    mix-blend-mode: difference;
+  }
+
+  .cursor-dot {
+    width: 6px;
+    height: 6px;
+    margin: -3px 0 0 -3px;
+    border-radius: 9999px;
+    background: var(--fg);
+  }
+
+  /* translation lives on .cursor-frame (GSAP); scale + blur on the inner
+     box so the focus brackets never displace from the pointer */
+  .cursor-frame-inner {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    margin: -18px 0 0 -18px;
+    will-change: transform, filter;
+  }
+}
+
+@media (pointer: coarse) {
+  .cursor-dot,
+  .cursor-frame {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain,
+  .rec-dot,
+  .scroll-cue::after {
+    animation: none;
+  }
 }
