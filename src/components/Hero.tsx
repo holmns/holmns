@@ -4,6 +4,10 @@ import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
 import { site } from "@/data/site";
 import HeroCanvas from "./HeroCanvas";
+import HeroGradient from "./HeroGradient";
+
+// hero background: "particles" (ember field) or "gradient" (blurred fluid gradient)
+const HERO_BG: "particles" | "gradient" = "gradient";
 
 const TITLE = "HOLMES";
 const ROLES = ["Developer", "Photographer", "Filmmaker"];
@@ -60,7 +64,7 @@ export default function Hero({ ready }: HeroProps) {
 
   return (
     <section ref={rootRef} id="home" className="relative flex h-svh min-h-[560px] flex-col overflow-hidden">
-      <HeroCanvas className="hero-canvas" />
+      {HERO_BG === "gradient" ? <HeroGradient className="hero-canvas" /> : <HeroCanvas className="hero-canvas" />}
 
       {/* vignette + bottom fade for readability */}
       <div
@@ -81,7 +85,7 @@ export default function Hero({ ready }: HeroProps) {
       </div>
 
       <div className="hero-inner relative z-10 flex flex-1 flex-col items-center justify-center px-5">
-        <p className="hero-fade mb-3 font-mono text-[10px] tracking-[0.35em] text-muted uppercase md:mb-5 md:text-xs">
+        <p className="hero-fade mb-3 font-mono text-[10px] tracking-[0.35em] text-fg/80 uppercase md:mb-5 md:text-xs">
           {site.name}
         </p>
 
@@ -95,7 +99,7 @@ export default function Hero({ ready }: HeroProps) {
           ))}
         </h1>
 
-        <div className="hero-fade mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-mono text-[10px] tracking-[0.3em] text-muted uppercase md:mt-7 md:text-xs">
+        <div className="hero-fade mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-mono text-[10px] tracking-[0.3em] text-fg/80 uppercase md:mt-7 md:text-xs">
           {ROLES.map((role, i) => (
             <span key={role} className="flex items-center gap-3">
               {i > 0 && <span className="text-accent">✕</span>}

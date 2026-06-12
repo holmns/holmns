@@ -6,6 +6,10 @@
   --muted: #8b887d;
   --accent: #ff3d24;
   --line: rgba(236, 235, 229, 0.14);
+  --grain-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* same tile with grayscale + contrast(320%) baked into the SVG filter chain —
+     a CSS filter on a blended layer trips Safari compositing bugs */
+  --grain-img-hero: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='3.2' intercept='-1.1'/%3E%3CfeFuncG type='linear' slope='3.2' intercept='-1.1'/%3E%3CfeFuncB type='linear' slope='3.2' intercept='-1.1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 @theme inline {
@@ -98,7 +102,31 @@ body {
   z-index: 100;
   pointer-events: none;
   opacity: 0.055;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: var(--grain-img);
+  animation: grain-shift 7s steps(10) infinite;
+}
+
+/* static stand-in for the WebGL hero background (browsers with WebGL disabled);
+   the opaque base color also gives .hero-grain's blend mode a backdrop to bite on */
+.hero-fallback {
+  background:
+    radial-gradient(50% 62% at 82% 22%, rgba(204, 49, 22, 0.5) 0%, rgba(204, 49, 22, 0) 70%),
+    radial-gradient(46% 56% at 55% 62%, rgba(115, 12, 9, 0.55) 0%, rgba(115, 12, 9, 0) 72%),
+    radial-gradient(40% 50% at 16% 84%, rgba(50, 6, 11, 0.6) 0%, rgba(50, 6, 11, 0) 75%),
+    var(--bg);
+}
+
+/* coarser film grain layered over the hero gradient canvas */
+.hero-grain {
+  position: absolute;
+  inset: -100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.65;
+  mix-blend-mode: overlay;
+  /* coarsened so it reads as analog film grain instead of faint color speckle */
+  background-image: var(--grain-img-hero);
+  background-size: 280px 280px;
   animation: grain-shift 7s steps(10) infinite;
 }
 
@@ -176,6 +204,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .grain,
+  .hero-grain,
   .rec-dot,
   .scroll-cue::after {
     animation: none;

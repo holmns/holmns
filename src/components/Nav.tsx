@@ -83,10 +83,11 @@ export default function Nav({ ready }: NavProps) {
         ref={barRef}
         className="fixed top-0 left-0 z-50 flex w-full items-center justify-between px-5 py-4 md:px-8 md:py-5"
       >
+        {/* no aria-label here: content-blocker annoyance lists hide elements
+            labelled "Back to top"; the visible brand text names the button */}
         <button
           onClick={() => scrollTo("#home")}
           className="font-display text-lg tracking-wide text-fg uppercase md:text-xl"
-          aria-label="Back to top"
         >
           {site.brand}
           <span className="text-accent">®</span>
